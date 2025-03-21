@@ -21,19 +21,19 @@ export class App extends React.Component<{}, States> {
 
   clockNameTimeIntervalId = 0;
 
-  handlerDocumentRigthClick = (event: MouseEvent) => {
+  handleDocumentRigthClick = (event: MouseEvent) => {
     event.preventDefault();
     this.setState({ hasClock: false });
   };
 
-  handlerDocumentLeftClick = (event: MouseEvent) => {
+  handleDocumentLeftClick = (event: MouseEvent) => {
     event.preventDefault();
     this.setState({ hasClock: true });
   };
 
   componentDidMount(): void {
-    document.addEventListener('contextmenu', this.handlerDocumentRigthClick);
-    document.addEventListener('click', this.handlerDocumentLeftClick);
+    document.addEventListener('contextmenu', this.handleDocumentRigthClick);
+    document.addEventListener('click', this.handleDocumentLeftClick);
 
     this.clockNameTimeIntervalId = window.setInterval(() => {
       this.setState({ clockName: getRandomName() });
@@ -41,8 +41,8 @@ export class App extends React.Component<{}, States> {
   }
 
   componentWillUnmount(): void {
-    document.removeEventListener('contextmenu', this.handlerDocumentRigthClick);
-    document.removeEventListener('click', this.handlerDocumentLeftClick);
+    document.removeEventListener('contextmenu', this.handleDocumentRigthClick);
+    document.removeEventListener('click', this.handleDocumentLeftClick);
     window.clearInterval(this.clockNameTimeIntervalId);
   }
 
